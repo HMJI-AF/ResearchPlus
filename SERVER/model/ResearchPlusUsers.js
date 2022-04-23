@@ -13,6 +13,10 @@ const researchPlusUsersSchema = new Schema({
     password:{
         type:String,
         required:true
+    },
+    isVerified:{
+        type:String,
+        required:true
     }
 })
 
