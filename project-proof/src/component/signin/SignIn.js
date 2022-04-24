@@ -1,6 +1,6 @@
+import  {useState} from 'react';
+import {useNavigate } from 'react-router-dom';
 import {  Button, Grid, Link, Paper, TextField, Typography } from "@mui/material";
-import React, { useState } from "react";
-import GoogleButton from "react-google-button";
 // import bcrypt from "bcryptjs/dist/bcrypt";
 
 import AppLogo from './../../images/SignIn&SignUp/lwre.png';
@@ -12,50 +12,57 @@ const textStyle={margin:'0px 0px 12px 0px'};
 const btnStyle={margin:'8px 0'};
 const typoStyle={align:'center'};
 const bottomText={margin:'10px 0px 10px 0px'}
-const bottomTextOr={margin:'10px 0px 10px 0px', fontSize:'50px'}
 
-const SignIn=()=>{
+    const SignIn = () =>{
 
-  const [input,setInput] = useState({
-    
-  });
+    const history = useNavigate();
+    const redirect = (path) => {
+      history(path)
+    }
+
+    const [credentials,setCredentials] = useState({
+      email:'',
+      password:''});
+
+    const handleSubmit = (e) =>{
+
+      e.preventDefault();
   
-  const handleChange = (e) =>{
-    setInput({...input,[e.target.name]:e.target.value});
-    
-  }
+      // input.password = bcrypt.hashSync(input.password,'$2a$10$CwTycUXWue0Thq9StjUM0u')
+      // input.password = hashedPassword;
+      
+      console.log(credentials);
+    }
 
-  const handleSubmit = (e) =>{
+    return (
 
-    e.preventDefault();
-
-    // input.password = bcrypt.hashSync(input.password,'$2a$10$CwTycUXWue0Thq9StjUM0u')
-    // input.password = hashedPassword;
-    
-    console.log(input);
-  }
-
-  const googleSignIn = (e) =>{
-    console.log("Google Sign In");
-  }
-
-  return(
-    <Grid>
+      <Grid>
       <Paper elevation={10} style={paperStyle2}>
         <div align="left">
         <img src={AppLogo} alt="Logo" />
         </div>
         </Paper>
+
       <Paper elevation={10} style={paperStyle}>
         <Grid align='center'>
           <img src={Logo} alt="Logo" />
           <h2>Sign In </h2>
         </Grid>
+
         <form onSubmit={handleSubmit}>
-        <TextField label="Enter SLIIT Email Address" type="email" name="email" fullWidth required style={textStyle} value={input.email} onChange={handleChange} />
-        <TextField label="Password"  type="password" name="password" fullWidth required style={textStyle} value={input.password} onChange={handleChange}/>
-        <Button type="submit" color="primary" variant="contained" fullWidth style={btnStyle}>Sign In</Button>
+        <TextField label="Enter SLIIT Email Address" type="text" name="email" fullWidth required style={textStyle} value={credentials.email}
+         onChange={e=> setCredentials({email:e.target.value, password:credentials.password})} />
+        <TextField label="Password"  type="password" name="password" fullWidth required style={textStyle} value={credentials.password}
+         onChange={e=> setCredentials({email:credentials.email, password:e.target.value})}/>
+
+        <Button type="submit" color="primary" variant="contained" fullWidth style={btnStyle}
+        disabled={ !(/^([A-Za-z0-9_\-.])+@(["my.sliit"])+\.(["lk"]{2,})$/.test(credentials.email)) }
+        onClick={()=>{
+          if (credentials.password === "let-me-in")
+            redirect("/secret");
+        }}>Sign In</Button>
         </form>
+
         <div align='center' style={bottomText}>
           <div  className={typoStyle}>
         <Typography>
@@ -65,6 +72,7 @@ const SignIn=()=>{
         </Typography>
         </div>
         </div>
+        
         <div align='center'style={bottomText}>
         <Typography>Don't you have an account?
           <Link href="signup">
@@ -72,17 +80,12 @@ const SignIn=()=>{
           </Link>
         </Typography>
         </div>
-        <div align='center'style={bottomTextOr}>
-        <Typography> Or </Typography>
-        </div>
-        <div align="center">
-        <GoogleButton fullWidth type="light" label="Continue with Google" onClick={googleSignIn}/>
-        </div>
         
       </Paper>
     </Grid>
-  );
-}
+      
+    )
 
+}
 
 export default SignIn;
