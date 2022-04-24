@@ -1,5 +1,5 @@
 import  {useState} from 'react';
-import {useNavigate } from 'react-router-dom';
+import {useNavigate} from 'react-router-dom';
 import {  Button, Grid, Link, Paper, TextField, Typography } from "@mui/material";
 // import bcrypt from "bcryptjs/dist/bcrypt";
 
@@ -16,8 +16,8 @@ const bottomText={margin:'10px 0px 10px 0px'}
     const SignIn = () =>{
 
     const history = useNavigate();
-    const redirect = (path) => {
-      history(path)
+    const redirect = (path,data) => {
+      history(path,data)
     }
 
     const [credentials,setCredentials] = useState({
@@ -59,7 +59,9 @@ const bottomText={margin:'10px 0px 10px 0px'}
         disabled={ !(/^([A-Za-z0-9_\-.])+@(["my.sliit"])+\.(["lk"]{2,})$/.test(credentials.email)) }
         onClick={()=>{
           if (credentials.password === "let-me-in")
-            redirect("/secret");
+
+          redirect("/secret",{state:{credentials}});
+
         }}>Sign In</Button>
         </form>
 
