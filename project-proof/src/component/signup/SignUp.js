@@ -12,7 +12,7 @@ const paperStyle2={padding:10};
 const textStyle={margin:'0px 0px 12px 0px'};
 const btnStyle={margin:'8px 0'};
 const bottomText={margin:'10px 0px 10px 0px'};
-const errorMsg = {width:"auto", padding: "15px", margin:"5px 0",fontSize: "15px",backgroundColor:"#f34646",color:"white",align:"center"};
+const errorMsg = {width:"auto", padding: "15px", margin:"5px 0",fontSize: "15px",backgroundColor:"#f34646",color:"white",textAlign:"center", borderRadius:"4px"};
 // const bottomTextOr={margin:'10px 0px 10px 0px', fontSize:'50px'}
 
 const SignUp=()=>{
