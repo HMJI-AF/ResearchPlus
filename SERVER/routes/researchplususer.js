@@ -1,31 +1,33 @@
 const router = require("express").Router();
-let ResearchPlusUser = require('../model/ResearchPlusUsers');
+let {ResearchPlusUser,validate} = require('../model/ResearchPlusUsers');
+const bcrypt = require('bcrypt')
 
-router.route("/add").post((req,res)=>{
-    console.log(req.body.email)
-    const {email,password,isVerified} = req.body;
+router.post('/add',async (req,res)=>{
+    try{
+        // console.log(req.body)
+        const {error} = validate(req.body);
+        if(error){
+            console.log("Problem with credentials")
+            console.log(req.body)
+            console.log(error.details[0].message)
+            return (res.status(400).send({message: error.details[0].message}))
+            // console.log(error.details[0].message)
+        }else{
+            const user = await ResearchPlusUser.findOne({email:req.body.email});
 
-    const newUser = new ResearchPlusUser({
-        email,
-        password,
-        isVerified
-    })
-    
-    newUser.save().then(()=>{
-        console.log("User Added");
-        res.status(200).send({ status: "User added" });
-    }).catch((err)=>{
-        console.log(err)
-        res.status(500).json({status:"Error with adding a user"})
-    })
-})
+            if(user){
+                return res.status(409).send({message: "User with given email already exists"})
+            }else{
+            const salt = await bcrypt.genSalt(Number(process.env.SALT));
+            const hashPassword = await bcrypt.hash(req.body.password,salt)
 
-router.route("/").get((req,res)=>{
-    ResearchPlusUser.find().then((user)=>{
-        res.json(user)
-    }).catch((err)=>{
-        res.status(500).json({status:"User did not fetch",err})
-    })
+            await new ResearchPlusUser({...req.body, password: hashPassword}).save()
+            res.status(201).send({message: "User created Successfully"})
+        }
+        }
+    }catch (error){
+        res.status(500).send({message: "Internal Server Error"})
+    }
 })
 
 module.exports = router;

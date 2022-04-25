@@ -26,8 +26,10 @@ connection.once("open", ()=>{
 })
 
 const researchplususer = require('./routes/researchplususer.js');
+const authRoutes = require('./routes/auth');
 
 app.use("/user",researchplususer);
+app.use("/auth", authRoutes);
 
 
 
