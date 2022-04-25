@@ -39,7 +39,6 @@ const SignIn = () =>{
         localStorage.setItem("token",res.data); 
         console.log(res.data)
         window.location = "/dashboard"
-        // history("/")
       }catch(error){
         if(
           error.response &&
@@ -49,11 +48,7 @@ const SignIn = () =>{
           setError(error.response.data.message);
         }
       }
-  
-      // input.password = bcrypt.hashSync(input.password,'$2a$10$CwTycUXWue0Thq9StjUM0u')
-      // input.password = hashedPassword;
-      
-      console.log(credentials);
+      // console.log(credentials);
     }
 
     return (
