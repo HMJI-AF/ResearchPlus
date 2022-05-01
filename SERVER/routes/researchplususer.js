@@ -16,11 +16,11 @@ router.post('/add',async (req,res)=>{
 
     const token = crypto.randomBytes(48).toString('hex');
 
-    const link = `http://localhost:4500/user/verify/${token}`;
+    const link = `http://localhost:3000/verify/${token}`;
 
     var mailOptions = {
         from: 'researchplus@gmail.com',
-        to: 'chaminduimalsha@gmail.com',
+        to: req.body.email,
         subject: 'Welcome to Rearch Plus! You successfully created account.',
         text: 'That was easy!',
         html: `<p><em>To veirfy your account please click <a href="${link}" target="_blank" rel="noopener">Here</a>.</em></p>`
@@ -43,20 +43,20 @@ router.post('/add',async (req,res)=>{
             }
             
             else{
-
-                transporter.sendMail(mailOptions, function(error, info){
+                transporter.sendMail(mailOptions, async function(error, info){
                     if (error) {
                         console.log(error);
                     } else {
                         console.log('Email sent: ' + info.response);
+                        
+                        const salt = await bcrypt.genSalt(Number(process.env.SALT));
+                        const hashPassword = await bcrypt.hash(req.body.password,salt)
+
+                        await new ResearchPlusUser({...req.body, password: hashPassword, isVerified: false, token: token}).save()
+                        res.status(201).send({message: "User created Successfully"})
                     }
                 });
-
-                const salt = await bcrypt.genSalt(Number(process.env.SALT));
-                const hashPassword = await bcrypt.hash(req.body.password,salt)
-
-                await new ResearchPlusUser({...req.body, password: hashPassword, isVerified: false, token: token}).save()
-                res.status(201).send({message: "User created Successfully"})
+                
             }
         }
     }catch (error){
