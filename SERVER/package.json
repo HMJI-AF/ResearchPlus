@@ -5,7 +5,9 @@
   "main": "index.js",
   "scripts": {
     "start": "node server.js",
-    "dev": "nodemon server.js"
+    "api": "nodemon server.js",
+    "frontend": "npm start --prefix ../project-proof",
+    "dev": "concurrently \"npm run api\" \"npm run frontend\""
   },
   "keywords": [],
   "author": "",
@@ -21,6 +23,7 @@
     "joi-password-complexity": "^5.1.0",
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^6.3.1",
+    "nodemailer": "^6.7.4",
     "validation": "0.0.1"
   },
   "devDependencies": {
