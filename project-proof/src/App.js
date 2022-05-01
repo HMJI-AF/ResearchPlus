@@ -3,11 +3,17 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import SignUp from './component/signup/SignUp';
 import Secret from './component/Auth/Secret';
 import Dashboard from './component/Dashboard/Dashboard';
+import Verify from './component/pages/Verify';
+import LandedPage from './component/pages/LandedPage';
 
 function App() {
   return (
     <BrowserRouter>
       <Routes>
+
+      <Route path="/verify/:token" element={<Verify/>}/>
+      <Route path="/landedpage" element={<LandedPage/>}/>
+
       <Route path="/signin" element={<SignIn/>}/>
       <Route path="/signup" element={<SignUp/>}/>
       <Route path="/secret" element={<Secret/>}/>

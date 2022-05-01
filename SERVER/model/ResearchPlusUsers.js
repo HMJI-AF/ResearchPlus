@@ -17,6 +17,9 @@ const researchPlusUsersSchema = new Schema({
     isVerified:{
         type:Boolean,
         required:true
+    },
+    token: {
+        type: String,
     }
 })
 

@@ -42,13 +42,15 @@ const SignUp=()=>{
       try{
         const user = {
           "email":credentials.email,
-          "password":credentials.password,
-          "isVerified":false
+          "password":credentials.password
         }
         console.log(user);
 
-        await axios.post("http://localhost:4500/user/add",user);
-        navigate('/signin')
+        await axios.post("http://localhost:4500/user/add",user).then(() => {
+          alert("please check your email");
+          navigate('/signin');
+        })
+        
         
       }catch(error){
         console.log(error)
@@ -85,7 +87,7 @@ const SignUp=()=>{
         <TextField label="Password"  type="password" name="password" fullWidth required style={textStyle} value={credentials.password} onChange={handleChange}/>
         <TextField label="Confirm Password"  type="password" name="cpassword" fullWidth required style={textStyle} value={credentials.cpassword} onChange={handleChange}/>
         {error && <div style={errorMsg}>{error}</div>}
-        <Button type="submit" color="primary" variant="contained" fullWidth style={btnStyle} disabled={ !(/^([A-Za-z0-9_\-.])+@(["my.sliit"])+\.(["lk"]{2,})$/.test(credentials.email)) }>Sign Up</Button>
+        <Button type="submit" color="primary" variant="contained" fullWidth style={btnStyle} >Sign Up</Button>
         </form>
         <div align='center' style={bottomText}>
         <Typography>Do you have an account?
