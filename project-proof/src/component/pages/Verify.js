@@ -1,18 +1,15 @@
 import axios from "axios";
-import {React, useEffect, useRef} from "react";
-// import { us } from 'react-router-dom';
+import {React, useEffect} from "react";
 import {  useParams } from 'react-router-dom';
 
 const Verify = () => {
 
-    // const navigate = useNavigate();
     const { token } = useParams();
 
-    useEffect(async () => {            
+    useEffect(() => {            
         try{
-            await axios.post('http://localhost:4500/auth/verify/' + token).then(() => {
+            axios.post('http://localhost:4500/auth/verify/' + token).then(() => {
                 console.log("vade hari");
-                // navigate('/landedpage');
                 window.location.href = "/landedpage";
             }) 
         }

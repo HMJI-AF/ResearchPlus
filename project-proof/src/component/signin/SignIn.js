@@ -1,8 +1,6 @@
 import  {useState} from 'react';
-// import {useNavigate} from 'react-router-dom';
 import {  Button, Grid, Link, Paper, TextField, Typography } from "@mui/material";
 import axios from 'axios';
-// import bcrypt from "bcryptjs/dist/bcrypt";
 
 import AppLogo from './../../images/SignIn&SignUp/lwre.png';
 import Logo from './../../images/SignIn&SignUp/sliit_logo.png';
@@ -16,11 +14,6 @@ const bottomText={margin:'10px 0px 10px 0px'};
 const errorMsg = {width:"auto", padding: "15px", margin:"5px 0",fontSize: "15px",backgroundColor:"#f34646",color:"white",textAlign:"center", borderRadius:"4px"};;
 
 const SignIn = () =>{
-
-    // const history = useNavigate();
-    // const redirect = (path,data) => {
-    //   history(path,data)
-    // }
 
     const [credentials,setCredentials] = useState({
       email:'',
@@ -48,7 +41,6 @@ const SignIn = () =>{
           setError(error.response.data.message);
         }
       }
-      // console.log(credentials);
     }
 
     return (
@@ -74,12 +66,7 @@ const SignIn = () =>{
           {error && <div style={errorMsg}>{error}</div>}
         <Button type="submit" color="primary" variant="contained" fullWidth style={btnStyle}
         disabled={ !(/^([A-Za-z0-9_\-.])+@(["my.sliit"])+\.(["lk"]{2,})$/.test(credentials.email)) }
-        // onClick={()=>{
-        //   if (credentials.password === "let-me-in")
-
-        //   redirect("/secret",{state:{credentials}});
-
-        // }}
+        
         >Sign In</Button>
         </form>
 

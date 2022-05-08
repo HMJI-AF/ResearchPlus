@@ -3,7 +3,6 @@ import React, { useState } from "react";
 import { useNavigate} from 'react-router-dom';
 import AppLogo from './../../images/SignIn&SignUp/lwre.png';
 import Logo from './../../images/SignIn&SignUp/sliit_logo.png';
-// import GoogleButton from "react-google-button";
 import axios from 'axios';
 
 
@@ -12,15 +11,13 @@ const paperStyle2={padding:10};
 const textStyle={margin:'0px 0px 12px 0px'};
 const btnStyle={margin:'8px 0'};
 const bottomText={margin:'10px 0px 10px 0px'};
-const errorMsg = {width:"auto", padding: "15px", margin:"5px 0",fontSize: "15px",backgroundColor:"#f34646",color:"white",textAlign:"center", borderRadius:"4px"};
-// const bottomTextOr={margin:'10px 0px 10px 0px', fontSize:'50px'}
+const errorMsg = {width:"auto", padding: "15px", margin:"5px 0",fontSize: "15px",
+                  backgroundColor:"#f34646",color:"white",textAlign:"center", borderRadius:"4px"
+                };
 
 const SignUp=()=>{
 
   const navigate = useNavigate();
-    // const redirect = (path,data) => {
-    //   history(path,data)
-    // }
 
   const [credentials,setCredentials] = useState({
     email:'',
@@ -63,11 +60,7 @@ const SignUp=()=>{
         }
       }
     }
-    // history('/signin')
   }
-  // const googleSignIn = () =>{
-  //   console.log("Pressed")
-  // }
 
 
   return(
@@ -96,12 +89,6 @@ const SignUp=()=>{
           </Link>
         </Typography>
         </div>
-        {/* <div align='center'style={bottomTextOr}>
-        <Typography> Or </Typography>
-        </div>
-        <div align="center">
-        <GoogleButton type="light" label="Continue with Google" onClick={googleSignIn}/>
-        </div> */}
       </Paper>
     </Grid>
   );

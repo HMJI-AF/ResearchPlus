@@ -1,9 +1,11 @@
 const router = require('express').Router();
 const { ResearchPlusUser } = require('../model/ResearchPlusUsers');
 const Joi = require("joi")
-const bcrypt = require('bcrypt')
+const bcrypt = require('bcrypt');
 
 router.post('/',async (req,res)=>{
+
+
     try{
         const {error} = validate(req.body);
         console.log(req.body);
@@ -14,7 +16,6 @@ router.post('/',async (req,res)=>{
             return res.status(400).send({message:error.details[0].message})
         }
         else if(!user){
-            console.log("Inside")
             return res.status(401).send({message: "Invalid Email or Password"})
         }
         else if(user.isVerified != true){
@@ -30,7 +31,8 @@ router.post('/',async (req,res)=>{
                 return res.status(401).send({message: "Invalid password"})
             }else{
                 const token = user.generateAuthToken();
-                res.status(200).send({data:token,message:"Logged in Successfully"})
+                res.status(200).send({data:token,message:"Logged in Successfully"});
+                localStorage.setItem('userLoginToken', token);
             }
         }
         
