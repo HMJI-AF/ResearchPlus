@@ -18,8 +18,8 @@ function App() {
       <Route path="/signin" element={<SignIn/>}/>
       <Route path="/signup" element={<SignUp/>}/>
       <Route path="/secret" element={<Secret/>}/>
-      <Route path="/dashboard" element={<Dashboard/>}/>
-      <Route path="/dashboard/Logout" element={<Logout/>}/>
+      <Route path="/Dashboard" element={<Dashboard/>}/>
+      <Route path="/Dashboard/Logout" element={<Logout/>}/>
       </Routes>
       </BrowserRouter>
     

@@ -5,11 +5,6 @@ function Dashboard(){
 
     const [username, setusername] = useState([]);
 
-    const logout = () => {
-        localStorage.clear("username");
-        window.location = "/signin"
-    }
-
     useEffect(()=>{
         const loggedInUser = localStorage.getItem("username");
 
@@ -25,9 +20,7 @@ function Dashboard(){
 
     return(
         <div>
-        <NavBar/>
-        
-        <h1 align="center">Wellcome to DashBoard {username}</h1>
+        <NavBar name={username}/>
 
         </div>
     )

@@ -15,9 +15,9 @@ import AdbIcon from '@mui/icons-material/Adb';
 import { Link } from 'react-router-dom';
 
 const pages = ['Topic1', 'Topic2', 'Topic3', 'Topic4'];
-const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
+const settings = ['Profile', 'Dashboard', 'Logout'];
 
-const NavBar = () => {
+const ResponsiveAppBar = ({name}) => {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
 
@@ -32,8 +32,7 @@ const NavBar = () => {
     setAnchorElNav(null);
   };
 
-  const handleCloseUserMenu = (setting) => {
-
+  const handleCloseUserMenu = () => {
     setAnchorElUser(null);
   };
 
@@ -46,13 +45,13 @@ const NavBar = () => {
             variant="h6"
             noWrap
             component="a"
-            href="/dashboard"
+            href="/"
             sx={{
               mr: 2,
               display: { xs: 'none', md: 'flex' },
               fontFamily: 'monospace',
               fontWeight: 700,
-              letterSpacing: '.3rem',
+              letterSpacing: '.1rem',
               color: 'inherit',
               textDecoration: 'none',
             }}
@@ -91,24 +90,41 @@ const NavBar = () => {
             >
               {pages.map((page) => (
                 <MenuItem key={page} onClick={handleCloseNavMenu}>
-                  <Typography textAlign="center">{page[1]}</Typography>
+                  <Typography textAlign="center">{page}</Typography>
                 </MenuItem>
               ))}
             </Menu>
           </Box>
           <AdbIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }} />
-          <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
+          <Typography
+            variant="h5"
+            noWrap
+            component="a"
+            href=""
+            sx={{
+              mr: 2,
+              display: { xs: 'flex', md: 'none' },
+              flexGrow: 1,
+              fontFamily: 'monospace',
+              fontWeight: 700,
+              letterSpacing: '.1rem',
+              color: 'inherit',
+              textDecoration: 'none',
+            }}
+          >
+            ResearchPlus
+          </Typography>
+          <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
             {pages.map((page) => (
-                
-                <Link to={`${page}`} style={{textDecoration:'none'}}>
+              <Link to={`${page}`} style={{textDecoration:'none'}}>
               <Button 
                 key={page}
                 onClick={handleCloseNavMenu}
                 sx={{ my: 2, color: "white", display: "block" }}>{page}
               </Button>
               </Link>
-          ))}
-        </Box>
+            ))}
+          </Box>
 
           <Box sx={{ flexGrow: 0 }}>
             <Tooltip title="Open settings">
@@ -133,18 +149,33 @@ const NavBar = () => {
               onClose={handleCloseUserMenu}
             >
               {settings.map((setting) => (
-                  <Link to={`${setting}`} style={{textDecoration:'none'}}>
-                      {/* onClick={checklogout(setting)} -  */}
-                      <MenuItem key={setting} onClick={handleCloseUserMenu}>
-                  <Typography textAlign="center">{setting}</Typography>
-                </MenuItem>
-                </Link>
+                <Link to={`${setting}`} style={{textDecoration:'none'}}>
+                <MenuItem key={setting} onClick={handleCloseUserMenu}>
+            <Typography textAlign="center">{setting}</Typography>
+          </MenuItem>
+          </Link>
               ))}
             </Menu>
           </Box>
+            <Link to='/Profile' style={{textDecoration:'none'}}>
+          <Typography
+            variant="h6"
+            noWrap
+            component="a"
+            sx={{
+              mr: 2,
+              display: { xs: 'none', md: 'flex' },
+              color: 'white',
+              textDecoration: 'none',
+              marginLeft: '0.8rem',
+            }}
+          >
+            {name}
+          </Typography>
+            </Link>
         </Toolbar>
       </Container>
     </AppBar>
   );
 };
-export default NavBar;
+export default ResponsiveAppBar;
