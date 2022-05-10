@@ -30,7 +30,7 @@ const SignIn = () =>{
       try{
         const {data:res} = await axios.post("http://localhost:4500/auth",credentials);
         const username = credentials.email.split('@')[0];
-        localStorage.setItem("username",JSON.stringify(username)); 
+        localStorage.setItem("username",JSON.stringify(username));  
         //To get Token
         console.log(res.data)
         window.location = "/dashboard"
