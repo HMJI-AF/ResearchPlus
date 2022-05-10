@@ -1,6 +1,8 @@
 import { useEffect,useState } from "react";
+import { Route, Routes } from "react-router-dom";
+import Logout from "./components/Logout";
 import NavBar from './components/NavBar'
-// import {Routes, Route } from "react-router-dom";
+import Profile from "./components/Profile";
 
 function Dashboard(){
 
@@ -20,11 +22,13 @@ function Dashboard(){
     },[])
 
     return(
-
-        <div>  
+        <div>
         <NavBar name={username}/>
+        <Routes>
+        <Route path="/Profile" element={<Profile />} />
+        <Route path="/Logout" element={<Logout />} />
+        </Routes>
         </div>
-    
     )
 }
 

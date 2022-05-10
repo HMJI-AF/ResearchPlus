@@ -45,7 +45,7 @@ const ResponsiveAppBar = ({name}) => {
             variant="h6"
             noWrap
             component="a"
-            href="/"
+            href="/dashboard"
             sx={{
               mr: 2,
               display: { xs: 'none', md: 'flex' },
@@ -157,7 +157,7 @@ const ResponsiveAppBar = ({name}) => {
               ))}
             </Menu>
           </Box>
-            <Link to='/Profile' style={{textDecoration:'none'}}>
+            <Link to='Profile' style={{textDecoration:'none'}}>
           <Typography
             variant="h6"
             noWrap
