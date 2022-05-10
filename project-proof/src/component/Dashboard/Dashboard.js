@@ -16,7 +16,7 @@ function Dashboard(){
         if (!loggedInUser){
         window.location = "/signin"
         }else{
-            const username = JSON.parse(loggedInUser);
+            const username = (JSON.parse(loggedInUser)).toUpperCase();
             setusername(username);
         }
 
