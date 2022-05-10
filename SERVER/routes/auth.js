@@ -8,7 +8,7 @@ router.post('/',async (req,res)=>{
 
     try{
         const {error} = validate(req.body);
-        console.log(req.body);
+        // console.log(req.body);
         
         const user = await ResearchPlusUser.findOne({email:req.body.email});
 
@@ -22,7 +22,8 @@ router.post('/',async (req,res)=>{
 			return res.status(401).send({ message: "Please check your email to verify." });
 		}        
         else{
-            console.log(user)
+            const username = user.email.split('@')[0];
+            console.log("User - " + username + " logged In")
             const validPassword = await bcrypt.compare(
                 req.body.password, user.password
             );
@@ -32,7 +33,7 @@ router.post('/',async (req,res)=>{
             }else{
                 const token = user.generateAuthToken();
                 res.status(200).send({data:token,message:"Logged in Successfully"});
-                localStorage.setItem('userLoginToken', token);
+                // localStorage.setItem('userLoginToken', token);
             }
         }
         
