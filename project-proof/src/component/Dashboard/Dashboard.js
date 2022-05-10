@@ -28,7 +28,6 @@ function Dashboard(){
         <NavBar/>
         
         <h1 align="center">Wellcome to DashBoard {username}</h1>
-        <button onClick={logout}>LogOut</button>
 
         </div>
     )

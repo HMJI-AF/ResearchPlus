@@ -36,5 +36,3 @@ app.use("/auth", authRoutes);
 app.listen(PORT, ()=>{
     console.log(`Server is Running on port ${PORT}`);
 })
-
-// localhost://4500/user/add

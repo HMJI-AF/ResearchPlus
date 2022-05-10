@@ -5,6 +5,7 @@ import Secret from './component/Auth/Secret';
 import Dashboard from './component/Dashboard/Dashboard';
 import Verify from './component/pages/Verify';
 import LandedPage from './component/pages/LandedPage';
+import Logout from './component/Dashboard/components/Logout'
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
       <Route path="/signup" element={<SignUp/>}/>
       <Route path="/secret" element={<Secret/>}/>
       <Route path="/dashboard" element={<Dashboard/>}/>
+      <Route path="/dashboard/Logout" element={<Logout/>}/>
       </Routes>
       </BrowserRouter>
     

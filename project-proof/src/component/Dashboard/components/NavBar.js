@@ -32,7 +32,8 @@ const NavBar = () => {
     setAnchorElNav(null);
   };
 
-  const handleCloseUserMenu = () => {
+  const handleCloseUserMenu = (setting) => {
+
     setAnchorElUser(null);
   };
 
@@ -56,7 +57,7 @@ const NavBar = () => {
               textDecoration: 'none',
             }}
           >
-            LOGO
+            ResearchPlus
           </Typography>
 
           <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
@@ -90,38 +91,22 @@ const NavBar = () => {
             >
               {pages.map((page) => (
                 <MenuItem key={page} onClick={handleCloseNavMenu}>
-                  <Typography textAlign="center">{page}</Typography>
+                  <Typography textAlign="center">{page[1]}</Typography>
                 </MenuItem>
               ))}
             </Menu>
           </Box>
           <AdbIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }} />
-          <Typography
-            variant="h5"
-            noWrap
-            component="a"
-            href="/"
-            sx={{
-              mr: 2,
-              display: { xs: 'flex', md: 'none' },
-              flexGrow: 1,
-              fontFamily: 'monospace',
-              fontWeight: 700,
-              letterSpacing: '.3rem',
-              color: 'inherit',
-              textDecoration: 'none',
-            }}
-          >
-            LOGO
-          </Typography>
           <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
             {pages.map((page) => (
-              <Button
+                
+                <Link to={`${page}`} style={{textDecoration:'none'}}>
+              <Button 
                 key={page}
                 onClick={handleCloseNavMenu}
-                sx={{ my: 2, color: "white", display: "block" }}>
-                {page}
+                sx={{ my: 2, color: "white", display: "block" }}>{page}
               </Button>
+              </Link>
           ))}
         </Box>
 
@@ -148,9 +133,12 @@ const NavBar = () => {
               onClose={handleCloseUserMenu}
             >
               {settings.map((setting) => (
-                <MenuItem key={setting} onClick={handleCloseUserMenu}>
+                  <Link to={`${setting}`} style={{textDecoration:'none'}}>
+                      {/* onClick={checklogout(setting)} -  */}
+                      <MenuItem key={setting} onClick={handleCloseUserMenu}>
                   <Typography textAlign="center">{setting}</Typography>
                 </MenuItem>
+                </Link>
               ))}
             </Menu>
           </Box>
