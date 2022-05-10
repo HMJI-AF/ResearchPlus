@@ -1,5 +1,6 @@
 import { useEffect,useState } from "react";
 import NavBar from './components/NavBar'
+// import {Routes, Route } from "react-router-dom";
 
 function Dashboard(){
 
@@ -19,10 +20,11 @@ function Dashboard(){
     },[])
 
     return(
-        <div>
-        <NavBar name={username}/>
 
+        <div>  
+        <NavBar name={username}/>
         </div>
+    
     )
 }
 

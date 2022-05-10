@@ -6,6 +6,7 @@ import Dashboard from './component/Dashboard/Dashboard';
 import Verify from './component/pages/Verify';
 import LandedPage from './component/pages/LandedPage';
 import Logout from './component/Dashboard/components/Logout'
+import Profile from './component/Dashboard/components/Profile';
 
 function App() {
   return (
@@ -19,7 +20,8 @@ function App() {
       <Route path="/signup" element={<SignUp/>}/>
       <Route path="/secret" element={<Secret/>}/>
       <Route path="/Dashboard" element={<Dashboard/>}/>
-      <Route path="/Dashboard/Logout" element={<Logout/>}/>
+      <Route path="/Dashboard/Logout" exact element={<Logout/>}/>
+      <Route path="/Dashboard/Profile" exact element={<Profile/>}/>
       </Routes>
       </BrowserRouter>
     
