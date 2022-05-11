@@ -17,7 +17,7 @@ import { Link } from 'react-router-dom';
 const pages = ['Topic1', 'Topic2', 'Topic3', 'Topic4'];
 const settings = ['Profile', 'Dashboard', 'Logout'];
 
-const ResponsiveAppBar = ({name}) => {
+const NavBar = ({name}) => {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
 
@@ -178,4 +178,4 @@ const ResponsiveAppBar = ({name}) => {
     </AppBar>
   );
 };
-export default ResponsiveAppBar;
+export default NavBar;

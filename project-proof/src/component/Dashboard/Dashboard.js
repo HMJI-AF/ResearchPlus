@@ -6,16 +6,21 @@ import Profile from "./components/Profile";
 
 function Dashboard(){
 
+    // const [user, setUser] = useState([]);
     const [username, setusername] = useState([]);
+
+
 
     useEffect(()=>{
         const loggedInUser = localStorage.getItem("username");
+        // const loggedInUserId = localStorage.getItem("userId");
 
         if (!loggedInUser){
         window.location = "/signin"
         }else{
             const username = (JSON.parse(loggedInUser)).toUpperCase();
             setusername(username);
+
         }
 
         
@@ -25,7 +30,7 @@ function Dashboard(){
         <div>
         <NavBar name={username}/>
         <Routes>
-        <Route path="/Profile" element={<Profile />} />
+        <Route path="/Profile" element={<Profile />}/>
         <Route path="/Logout" element={<Logout />} />
         </Routes>
         </div>

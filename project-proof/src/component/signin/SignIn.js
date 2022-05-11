@@ -4,6 +4,7 @@ import axios from 'axios';
 
 import AppLogo from './../../images/SignIn&SignUp/lwre.png';
 import Logo from './../../images/SignIn&SignUp/sliit_logo.png';
+import { useNavigate } from 'react-router-dom';
 
 const paperStyle={padding:20, height:'auto', width:300, margin:'20px auto'};
 const paperStyle2={padding:10};
@@ -14,6 +15,8 @@ const bottomText={margin:'10px 0px 10px 0px'};
 const errorMsg = {width:"auto", padding: "15px", margin:"5px 0",fontSize: "15px",backgroundColor:"#f34646",color:"white",textAlign:"center", borderRadius:"4px"};;
 
 const SignIn = () =>{
+
+  const navigate = useNavigate();
 
     const [credentials,setCredentials] = useState({
       email:'',
@@ -31,9 +34,8 @@ const SignIn = () =>{
         const {data:res} = await axios.post("http://localhost:4500/auth",credentials);
         const username = credentials.email.split('@')[0];
         localStorage.setItem("username",JSON.stringify(username));  
-        //To get Token
-        console.log(res.data)
-        window.location = "/dashboard"
+        localStorage.setItem("userId",JSON.stringify(res.data));
+        navigate('/dashboard',{state:{dataId:res.data}})
       }catch(error){
         if(
           error.response &&

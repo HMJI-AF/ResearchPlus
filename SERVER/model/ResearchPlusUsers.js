@@ -1,7 +1,6 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 const jwt = require('jsonwebtoken');
-const joi = require('joi');
 const passwordComplexity = require('joi-password-complexity');
 const Joi = require('joi');
 
@@ -16,6 +15,10 @@ const researchPlusUsersSchema = new Schema({
     },
     isVerified:{
         type:Boolean,
+        required:true
+    },
+    role: {
+        type: String,
         required:true
     },
     token: {

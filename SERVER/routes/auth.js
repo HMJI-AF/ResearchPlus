@@ -8,8 +8,8 @@ router.post('/',async (req,res)=>{
 
     try{
         const {error} = validate(req.body);
-        // console.log(req.body);
-        
+        console.log(req.body);
+        // const user = await ResearchPlusUser.findOne({email:'it20233358@my.sliit.lk'});
         const user = await ResearchPlusUser.findOne({email:req.body.email});
 
         if(error){
@@ -24,6 +24,7 @@ router.post('/',async (req,res)=>{
         else{
             const username = user.email.split('@')[0];
             console.log("User - " + username + " logged In")
+            // console.log(user._id)
             const validPassword = await bcrypt.compare(
                 req.body.password, user.password
             );
@@ -32,7 +33,7 @@ router.post('/',async (req,res)=>{
                 return res.status(401).send({message: "Invalid password"})
             }else{
                 const token = user.generateAuthToken();
-                res.status(200).send({data:token,message:"Logged in Successfully"});
+                res.status(200).send({data:user._id,message:"Logged in Successfully"});
                 // localStorage.setItem('userLoginToken', token);
             }
         }
@@ -66,5 +67,7 @@ router.route("/verify/:token").post( async (req, res) => {
 		res.status(500).send({ message: "Internal Server Error" });
 	}
 });
+
+
 
 module.exports = router;
