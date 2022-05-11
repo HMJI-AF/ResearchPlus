@@ -20,8 +20,8 @@ function App() {
       <Route path="/signup" element={<SignUp/>}/>
       <Route path="/secret" element={<Secret/>}/>
       <Route path="/Dashboard" element={<Dashboard/>}/>
-      <Route path="/Dashboard/Logout" exact element={<Logout/>}/>
-      <Route path="/Dashboard/Profile" exact element={<Profile/>}/>
+      <Route path="/Dashboard/Logout" element={<Logout/>}/>
+      <Route path="/Dashboard/Profile" element={<Profile/>}/>
       </Routes>
       </BrowserRouter>
     
