@@ -1,12 +1,9 @@
 import SignIn from './component/signin/SignIn';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import SignUp from './component/signup/SignUp';
-// import Secret from './component/Auth/Secret';
 import Dashboard from './component/Dashboard/Dashboard';
 import Verify from './component/pages/Verify';
 import LandedPage from './component/pages/LandedPage';
-// import Logout from './component/Dashboard/components/Logout'
-// import Profile from './component/Dashboard/components/Profile';
 import Hello from './component/Hello';
 
 function App() {
@@ -20,7 +17,6 @@ function App() {
 
 
       <Route path="/dashboard/*" element={<Dashboard/>}/>
-
       <Route path="/verify/:token" element={<Verify/>}/>
       <Route path="/landedpage" element={<LandedPage/>}/>
 
