@@ -4,8 +4,6 @@ const Joi = require("joi")
 const bcrypt = require('bcrypt');
 
 router.post('/',async (req,res)=>{
-
-
     try{
         const {error} = validate(req.body);
         const user = await ResearchPlusUser.findOne({email:req.body.email});
@@ -40,6 +38,7 @@ router.post('/',async (req,res)=>{
         res.status(500).send({message: "Internal Server Error"})
     }
 })
+
 
 const validate = (data) =>{
    const schema = Joi.object({
