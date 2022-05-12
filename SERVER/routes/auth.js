@@ -8,8 +8,6 @@ router.post('/',async (req,res)=>{
 
     try{
         const {error} = validate(req.body);
-        console.log(req.body);
-        // const user = await ResearchPlusUser.findOne({email:'it20233358@my.sliit.lk'});
         const user = await ResearchPlusUser.findOne({email:req.body.email});
 
         if(error){
