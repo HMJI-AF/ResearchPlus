@@ -6,6 +6,8 @@ import Profile from "./components/Profile";
 
 function Dashboard(){
 
+    // const value = false;
+
     // const [user, setUser] = useState([]);
     const [username, setusername] = useState([]);
 
@@ -29,6 +31,10 @@ function Dashboard(){
     return(
         <div>
         <NavBar name={username}/>
+
+
+
+        {/* The user is <b>{value ? 'currently' : 'not'}</b> logged in. */}
         <Routes>
         <Route path="/Profile" element={<Profile />}/>
         <Route path="/Logout" element={<Logout />} />
