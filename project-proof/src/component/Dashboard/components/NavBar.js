@@ -17,7 +17,7 @@ import { Link } from 'react-router-dom';
 const pages = ['Topic1', 'Topic2', 'Topic3', 'Topic4'];
 const settings = ['Profile', 'Dashboard', 'Logout'];
 
-const ResponsiveAppBar = ({name}) => {
+const NavBar = ({name}) => {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
 
@@ -45,7 +45,7 @@ const ResponsiveAppBar = ({name}) => {
             variant="h6"
             noWrap
             component="a"
-            href="/"
+            href="/dashboard"
             sx={{
               mr: 2,
               display: { xs: 'none', md: 'flex' },
@@ -157,7 +157,7 @@ const ResponsiveAppBar = ({name}) => {
               ))}
             </Menu>
           </Box>
-            <Link to='/Profile' style={{textDecoration:'none'}}>
+            <Link to='Profile' style={{textDecoration:'none'}}>
           <Typography
             variant="h6"
             noWrap
@@ -178,4 +178,4 @@ const ResponsiveAppBar = ({name}) => {
     </AppBar>
   );
 };
-export default ResponsiveAppBar;
+export default NavBar;

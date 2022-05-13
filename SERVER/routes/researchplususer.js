@@ -52,7 +52,7 @@ router.post('/add',async (req,res)=>{
                         const salt = await bcrypt.genSalt(Number(process.env.SALT));
                         const hashPassword = await bcrypt.hash(req.body.password,salt)
 
-                        await new ResearchPlusUser({...req.body, password: hashPassword, isVerified: false, token: token}).save()
+                        await new ResearchPlusUser({...req.body, password: hashPassword, isVerified: false, role: "student",token: token}).save()
                         res.status(201).send({message: "User created Successfully"})
                     }
                 });
@@ -64,7 +64,7 @@ router.post('/add',async (req,res)=>{
     }
 })
 
-router.route('/get').get((req, res) => {
+router.route('/').get((req, res) => {
     ResearchPlusUser.find().then((home_buildings) => {
         res.json(home_buildings);
     }).catch((err) => {
@@ -81,6 +81,15 @@ router.route("/delete/:id").delete(async (req, res) => {
     }).catch((err) => {
         console.log(err.message);
         res.status(500).send({status: "error with delete data", error: err.message});
+    })
+})
+
+router.route('/:id').get((req,res)=>{
+
+    ResearchPlusUser.findById(req.params.id).then((users)=>{
+        res.json(users);
+    }).catch((err)=>{
+        res.json(err);
     })
 })
 
