@@ -4,9 +4,10 @@ import { Route, Routes } from "react-router-dom";
 import Logout from "./components/Logout";
 import NavBar from './components/NavBar'
 import Profile from "./components/Profile";
-import EditProfile from "./components/EditProfile";
 // import Test2 from "./components/Test2";
 import LandedPage from "./../pages/LandedPage"
+import AddGroup from "../GroupReg/AddGroup";
+import UserGroup from "../GroupReg/UserGroups";
 
 function Dashboard(){
 
@@ -44,6 +45,8 @@ function Dashboard(){
         <Route path="/Logout" element={<Logout />} />
         <Route path="/editprofile" element={<EditProfile/>}/>
         <Route path="/Test2" element={<LandedPage/>}/>
+        <Route path="/addgroup" element={<AddGroup />} />
+        <Route path="/Group" element={<UserGroup />} />
         </Routes>
         </div>
     )

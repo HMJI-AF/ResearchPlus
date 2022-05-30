@@ -15,7 +15,8 @@ import AdbIcon from '@mui/icons-material/Adb';
 import DashboardIcon from '@mui/icons-material/Dashboard';
 import { Link } from 'react-router-dom';
 
-const pages = ['test', 'test2', 'Topic3', 'Topic4'];
+// const pages = ['test', 'test2', 'Topic3', 'Topic4'];
+const pages = ['addgroup', 'Group', 'Topic3', 'Topic4'];
 const settings = ['Profile', 'Dashboard', 'Logout'];
 
 const NavBar = ({name}) => {
