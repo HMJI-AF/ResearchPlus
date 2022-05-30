@@ -134,6 +134,8 @@ function AdminUserTable() {
   return (
       <div>
           <hr/>
+          
+          <center><h3>User Table</h3></center>
       <center>
     <div style={{ height: 450, width: '70%' }}>
       <DataGrid

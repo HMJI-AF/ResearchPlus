@@ -1,13 +1,30 @@
 import React from 'react';
+import {   Grid, Paper} from "@mui/material";
+import { Route, Routes } from "react-router-dom";
+
+import FirstView from './landedComponents/FirstView';
+import SecondView from './landedComponents/SecondView';
+
+
+const paperStyle={padding:20, height:'auto', width:300, margin:'20px auto'};
 
 const LandedPage = () => {
 
     return(
-        <div>
-            <h1>Research</h1>
-            <h2>Thanks for connecting with us.</h2>
-            <h3>Your account is successfully created. Please close the page.</h3>
+    <div>
+        <Grid>
+            <Paper elevation={10} style={paperStyle}>
+
+        
+            <Routes>
+        <Route path="/firstView" element={<FirstView />}/>
+        <Route path="/passwordCheck" element={<SecondView />}/>
+        </Routes>
+
+      </Paper>
+    </Grid>
         </div>
+
     )
 }
 
