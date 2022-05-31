@@ -4,7 +4,7 @@ import { Route, Routes } from "react-router-dom";
 import Logout from "./components/Logout";
 import NavBar from './components/NavBar'
 import Profile from "./components/Profile";
-// import Test2 from "./components/Test2";
+import EditProfile from "./components/EditProfile";
 import LandedPage from "./../pages/LandedPage"
 import AddGroup from "../GroupReg/AddGroup";
 import UserGroup from "../GroupReg/UserGroups";

@@ -7,10 +7,14 @@ import axios from 'axios';
 
 const btnStyle={margin:'8px 0'};
 const textStyle={margin:'0px 0px 12px 0px'};
+const errorMsg = {width:"auto", padding: "15px", margin:"5px 0",fontSize: "15px",backgroundColor:"#f34646",color:"white",textAlign:"center", borderRadius:"4px"};;
+
 
 const SecondView = () => {
     
     const [credentials,setCredentials] = useState({password:''});
+    const [error,setError] = useState("");
+
     const token = localStorage.getItem("userToken")
 
     credentials.token = token
@@ -21,20 +25,28 @@ const SecondView = () => {
     
     const navigate = useNavigate();
 
-    const onClickSubmit = (e) =>{
+    const onClickSubmit = async(e) =>{
         e.preventDefault();
-        console.log(credentials)
-        const {data:res} =  axios.post("http://localhost:4500/auth/checkpw",credentials);  
-        console.log(res)
-        localStorage.setItem("userId",JSON.stringify(res.userId));  
-        localStorage.setItem("userEmail",JSON.stringify(res.userEmail));
-        // const username = localStorage.getItem("userEmail").split('@')[0];
+        try{
+        const {data:res} = await axios.post("http://localhost:4500/auth/checkpw",credentials);
+        localStorage.setItem("userId",JSON.stringify(res.userId));
         const username = res.userEmail.split('@')[0];
         localStorage.setItem("username",JSON.stringify(username));
 
-        // navigate('/dashboard',{state:{dataId:res.data}})
-
-        // navigate('/dashboard/editprofile');
+        if(localStorage.getItem("username")){
+            // localStorage.clear("userToken");
+            navigate('/dashboard/editprofile');
+        }
+        
+        }catch(error){
+            if(
+              error.response &&
+              error.response.status >=400 &&
+              error.response.status <=500
+            ){
+              setError(error.response.data.message);
+            }
+          }
     }
 
     return(
@@ -49,6 +61,7 @@ const SecondView = () => {
           
       </div>
 
+      {error && <div style={errorMsg}>{error}</div>}
         <Button type="submit" color="primary" variant="contained" fullWidth style={btnStyle} >Next<NavigateNextIcon/></Button>
         </form>
         </div>

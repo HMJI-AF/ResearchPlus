@@ -10,7 +10,7 @@ const Verify = () => {
         try{
             axios.post('http://localhost:4500/auth/verify/' + token).then(() => {
                 console.log("Success");
-                localStorage.setItem("userToken",JSON.stringify(token))
+                localStorage.setItem("userToken",token)
                 window.location.href = "/landedpage/firstView";
             }) 
         }
