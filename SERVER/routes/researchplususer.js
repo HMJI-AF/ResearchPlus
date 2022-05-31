@@ -72,10 +72,26 @@ router.route('/').get((req, res) => {
     })
 })
 
-router.route("/delete/:id").delete(async (req, res) => {
-    let landID = req.params.id;
 
-    await ResearchPlusUser.findByIdAndDelete(landID).then(() => {
+router.route("/edit/:id").put(async (req,res)=>{
+    let userId = req.params.id;
+    const {role} = req.body;
+
+    const updateUser = {
+       role
+    }
+
+    const update = await ResearchPlusUser.findByIdAndUpdate(userId,updateUser).then(()=>{
+        res.status(200).send({status:"User Updated"})
+    }).catch((err)=>{
+        res.status(500).send({status: "Error with updating data",err});
+    })
+})
+
+router.route("/delete/:id").delete(async (req, res) => {
+    let userId = req.params.id;
+
+    await ResearchPlusUser.findByIdAndDelete(userId).then(() => {
 
         res.status(200).send({status: "data deleted"});
     }).catch((err) => {

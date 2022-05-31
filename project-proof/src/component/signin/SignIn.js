@@ -1,13 +1,12 @@
 import  {useState} from 'react';
 import {  Button, Grid, Link, Paper, TextField, Typography } from "@mui/material";
 import axios from 'axios';
+import LoginNav from '../SignInNav/LoginNav';
 
-import AppLogo from './../../images/SignIn&SignUp/lwre.png';
 import Logo from './../../images/SignIn&SignUp/sliit_logo.png';
 import { useNavigate } from 'react-router-dom';
 
 const paperStyle={padding:20, height:'auto', width:300, margin:'20px auto'};
-const paperStyle2={padding:10};
 const textStyle={margin:'0px 0px 12px 0px'};
 const btnStyle={margin:'8px 0'};
 const typoStyle={align:'center'};
@@ -50,11 +49,7 @@ const SignIn = () =>{
     return (
 
       <Grid>
-      <Paper elevation={10} style={paperStyle2}>
-        <div align="left">
-        <img src={AppLogo} alt="Logo" />
-        </div>
-        </Paper>
+        <LoginNav />
 
       <Paper elevation={10} style={paperStyle}>
         <Grid align='center'>

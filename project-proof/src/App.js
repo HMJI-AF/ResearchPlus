@@ -35,8 +35,6 @@ function App() {
 
       <Route path="/dashboard/*" element={<Dashboard/>}/>
 
-
-
       <Route path="/verify/:token" element={<Verify/>}/>
 
       <Route path="/landedpage" element={<LandedPage/>}/>
