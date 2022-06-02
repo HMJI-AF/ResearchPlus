@@ -27,12 +27,14 @@ connection.once("open", ()=>{
 
 const researchplususer = require('./routes/researchplususer.js');
 const authRoutes = require('./routes/auth');
+const webRouter = require("./routes/Web.js");
 
 const group = require('./routes/groups')
 
 app.use("/user",researchplususer);
 app.use("/auth", authRoutes);
 app.use("/groups",group);
+app.use("/web", webRouter);
 
 
 

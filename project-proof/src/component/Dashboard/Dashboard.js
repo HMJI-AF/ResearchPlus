@@ -8,6 +8,11 @@ import EditProfile from "./components/EditProfile";
 import LandedPage from "./../pages/LandedPage"
 import AddGroup from "../GroupReg/AddGroup";
 import UserGroup from "../GroupReg/UserGroups";
+import AddCourse from "./course-web/AddCourse";
+import UploadFile from "./course-web/UploadFile";
+import VideoPlayer from "./course-web/VideoPlayer";
+import CourseWeb from "./course-web/CourseWeb";
+import AddHeader from "./course-web/AddHeader";
 
 function Dashboard(){
 
@@ -47,6 +52,14 @@ function Dashboard(){
         <Route path="/Test2" element={<LandedPage/>}/>
         <Route path="/addgroup" element={<AddGroup />} />
         <Route path="/Group" element={<UserGroup />} />
+
+
+        <Route path="/add-course" element={<AddCourse />} />
+        <Route path="/upload-file/:type" element={<UploadFile />} />
+        <Route path="/video-player" element={<VideoPlayer />} />
+        <Route path="/web" element={<CourseWeb />} />
+        <Route path="/add-header" element={<AddHeader />} />
+        {/* <Route path="/edit-header/:id" element={<EditHeader />} /> */}
         </Routes>
         </div>
     )
