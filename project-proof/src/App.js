@@ -29,6 +29,7 @@ function App() {
       <Route path="/signin" element={<SignIn/>}/>
 
       <Route path="/signup" element={<SignUp/>}/>
+      
 
 
 
@@ -36,8 +37,8 @@ function App() {
       <Route path="/dashboard/*" element={<Dashboard/>}/>
 
       <Route path="/verify/:token" element={<Verify/>}/>
+      <Route path="/landedpage/*" element={<LandedPage/>}/>
 
-      <Route path="/landedpage" element={<LandedPage/>}/>
 
 
 

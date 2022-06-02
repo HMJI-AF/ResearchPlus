@@ -65,6 +65,37 @@ router.route("/verify/:token").post( async (req, res) => {
 	}
 });
 
+router.route("/checkpw").post(async (req,res)=>{
+    try{
+        const user = await ResearchPlusUser.findOne({token:req.body.token});
+        if(!user){
+            console.log("Error with fetching user")
+            return res.status(401).send({message: "Invalid Email or Password"})
+            
+        }
+        else if(user.isVerified != true){
+			return res.status(401).send({ message: "Please check your email to verify." });
+		}        
+        else{
+            const validPassword = await bcrypt.compare(
+                req.body.password, user.password
+            );
+            
+            if(!validPassword){
+                return res.status(401).send({message: "Invalid password"})
+            }else{
+                const username = user.email.split('@')[0];
+                console.log("User - " + username + " logged In")
+                res.status(200).send({userId:user._id, userEmail:user.email, message:"Logged in Successfully"});
+                // localStorage.setItem('userLoginToken', token);
+            }
+        }
+        
+    }catch(error){
+        res.status(500).send({message: "Internal Server Error"})
+    }
+})
+
 
 
 module.exports = router;
