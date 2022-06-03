@@ -3,14 +3,14 @@ import axios from "axios";
 import { Link, useNavigate } from 'react-router-dom';
 import { Table, Button } from "@mui/material";
 
-export default function TopicReq(){
+export default function CoTopicReq(){
 
     const [topic, setTopics] = useState([]);
     const [listOfTopic, setListOfTopic] = useState([]);
 
     useEffect(()=> {
         function getTopic(){
-            axios.get("http://localhost:4500/topic/get-topic/" + JSON.parse(localStorage.getItem("username")).toUpperCase())
+            axios.get("http://localhost:4500/topic/co-get-topic/" + JSON.parse(localStorage.getItem("username")).toUpperCase())
             .then((res)=>{
                 setListOfTopic(res.data);
                 // console.log(res.data)
@@ -33,7 +33,7 @@ export default function TopicReq(){
                                 <td style={{height: '50px',   textAlign: 'center', backgroundColor: "yellow"}} >
                                     
 
-                                <Link to={`/dashboard/supTopicView/${val._id}`} style={{ textDecoration: 'none'}}>
+                                <Link to={`/dashboard/coTopicView/${val._id}`} style={{ textDecoration: 'none'}}>
                                     <Button type="button" style={{  fontFamily: 'Cursive'}} >
                                         The topic of "{val.topic}" is a request from {val.person1} for your({val.supervisor}) supervision.
                                     </Button>

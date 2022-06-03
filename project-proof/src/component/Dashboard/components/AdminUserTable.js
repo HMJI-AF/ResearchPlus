@@ -78,7 +78,7 @@ const columns = [
           color="primary"
           onClick={(event) => {
             updateUpUser(event, cellValues.row.role,cellValues.row._id);
-            console.log(cellValues.row._id)
+            // console.log(cellValues.row._id)
           }}>
           <ArrowUpwardIcon/>
         </Button>
@@ -88,7 +88,7 @@ const columns = [
         color="primary"
         onClick={(event) => {
           updateDownUser(event, cellValues.row.role,cellValues.row._id);
-          console.log(cellValues.row._id)
+          // console.log(cellValues.row._id)
         }}
         >
         <ArrowDownwardIcon/>

@@ -28,7 +28,7 @@ const UploadFile = () => {
         const config = {
             onUploadProgress: function(progressEvent) {
               var percentCompleted = (progressEvent.loaded * 100) / progressEvent.total;
-              console.log(percentCompleted)
+            //   console.log(percentCompleted)
             }
         }
 

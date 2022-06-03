@@ -62,7 +62,8 @@ router.route("/get-topic/:id").get((req,res)=>{
     let supervisorId = req.params.id;
     Topic.find(
         {
-            supervisor:supervisorId
+            supervisor:supervisorId,
+            supervisorOpinion: "pending"
         }
     ).then((topic)=>{
         res.json(topic)
@@ -70,6 +71,58 @@ router.route("/get-topic/:id").get((req,res)=>{
         console.log(err);
     })
 
+})
+
+router.route("/co-get-topic/:id").get((req,res)=>{
+    let supervisorId = req.params.id;
+    Topic.find(
+        {
+            coSupervisor:supervisorId,
+            coSupervisorOpinion: "pending",
+            supervisorOpinion: "Accept"
+        }
+    ).then((topic)=>{
+        res.json(topic)
+    }).catch((err)=>{
+        console.log(err);
+    })
+
+})
+
+router.route("/spesific-topic/:id").get((req,res)=>{
+    let topicId = req.params.id;
+    Topic.findOne(
+        {
+            _id:topicId
+        }
+    ).then((topic)=>{
+        res.json(topic)
+    }).catch((err)=>{
+        console.log(err);
+    })
+
+})
+
+router.route("/up-sup-opinion/:id").put((req,res)=>{
+    let topicId = req.params.id;
+    Topic.findByIdAndUpdate(
+        topicId, req.body
+    ).then((topic)=>{
+        res.json(topic)
+    }).catch((err)=>{
+        console.log(err);
+    })
+})
+
+router.route("/up-co-opinion/:id").put((req,res)=>{
+    let topicId = req.params.id;
+    Topic.findByIdAndUpdate(
+        topicId, req.body
+    ).then((topic)=>{
+        res.json(topic)
+    }).catch((err)=>{
+        console.log(err);
+    })
 })
 
 router.route("/update/:id").put(async (req, res)=>{

@@ -14,11 +14,11 @@ const fromun = {margin:'30px auto'};
 
     const [topic, setTopic] = useState("");
     const [supervisor, setSupervisor] = useState("");
-    const [supervisorOpinion, setSupervisorOpinion] = useState("pending...");
-    const [finalDecision, setFinalDecision] = useState("pending...");
+    const [supervisorOpinion, setSupervisorOpinion] = useState("pending");
+    const [finalDecision, setFinalDecision] = useState("pending");
     const [document, setDocument] = useState("");
     const [coSupervisor, setCoSupervisor] = useState("");
-    const [coSupervisorOpinion, setCoSupervisorOpinion] = useState("pending...");
+    const [coSupervisorOpinion, setCoSupervisorOpinion] = useState("pending");
 
 
     
@@ -40,7 +40,7 @@ const fromun = {margin:'30px auto'};
             coSupervisorOpinion
         }
 
-        console.log(newTopic)
+        // console.log(newTopic)
         
         axios.post("http://localhost:4500/topic/add",newTopic).then(()=>{
         alert("Topic Added")

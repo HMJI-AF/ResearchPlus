@@ -19,6 +19,9 @@ const GroupSchema = new Schema({
         type : String,
         required : true
     },
+    panelMember : {
+        type : String
+    },
 })
 
 const Group = mongoose.model("Group",GroupSchema);

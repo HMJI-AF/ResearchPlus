@@ -16,7 +16,7 @@ import DashboardIcon from '@mui/icons-material/Dashboard';
 import { Link } from 'react-router-dom';
 
 
-const pages = ['Topic', 'Group', 'web', 'Topic_reqests','studTopic'];
+const pages = ['Topic', 'Group', 'web', 'Topic_reqests', 'co_Topic_reqests'];
 
 // const pages = ['test', 'test2', 'Topic3', 'Topic4'];
 
