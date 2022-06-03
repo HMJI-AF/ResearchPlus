@@ -33,11 +33,11 @@ router.route("/delete/:id").delete(async (req, res) => {
 });
 
 router.route("/update/:id").put(async (req, res) => {
-    let outletid = req.params.id;
+    let courseid = req.params.id;
 
-    await Web.findByIdAndUpdate(outletid, req.body)
+    await Web.findByIdAndUpdate(courseid, req.body)
         .then(() => {
-            res.status(200).send({ status: "Outlet updated"});
+            res.status(200).send({ status: "Course updated"});
         })
         .catch((err) => {
             console.log(err);

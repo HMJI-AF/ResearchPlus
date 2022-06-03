@@ -13,6 +13,7 @@ import UploadFile from "./course-web/UploadFile";
 import VideoPlayer from "./course-web/VideoPlayer";
 import CourseWeb from "./course-web/CourseWeb";
 import AddHeader from "./course-web/AddHeader";
+import UpdateCourse from "./course-web/UpdateCourse";
 
 function Dashboard(){
 
@@ -59,7 +60,7 @@ function Dashboard(){
         <Route path="/video-player" element={<VideoPlayer />} />
         <Route path="/web" element={<CourseWeb />} />
         <Route path="/add-header" element={<AddHeader />} />
-        {/* <Route path="/edit-header/:id" element={<EditHeader />} /> */}
+        <Route path="/update-course/:id" element={<UpdateCourse />} />
         </Routes>
         </div>
     )

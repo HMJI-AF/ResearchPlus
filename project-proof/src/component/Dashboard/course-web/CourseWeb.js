@@ -174,7 +174,7 @@ export default function CourseWeb() {
     }
 
     const editData = (id) => {
-        window.location =("/edit-header/" + id);
+        window.location =("/dashboard/update-course/" + id);
     }
     
     const handleClick = (event) => {

@@ -5,13 +5,14 @@ import { useDropzone } from 'react-dropzone';
 import './course.css';
 import LinearProgress from '@mui/material/LinearProgress';
 import { red } from '@mui/material/colors';
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useLocation, useParams } from 'react-router-dom';
 import '../../../../node_modules/bootstrap/dist/css/bootstrap.min.css';
 
-const AddCourse = () => {
-    const [check, setCheck] = useState(false);
+const UpdateCourse = () => {
 
-    const search = useLocation().search;
+    const { id } = useParams();
+
+    const [check, setCheck] = useState(false);
     
     const [fileIN, setFileIN] = useState(false);
     const [thumbIN, setThumbIN] = useState(false);
@@ -29,9 +30,9 @@ const AddCourse = () => {
         iName: "",
         vName: "",
         selected: {
-            file: new URLSearchParams(search).get('file'),
-            image: new URLSearchParams(search).get('image'),
-            video: new URLSearchParams(search).get('video')
+            file: false,
+            image: false,
+            video: false
         }
     });
 
@@ -40,12 +41,20 @@ const AddCourse = () => {
     const onInputChange = e => {
         setCourse({...course, [e.target.name]: e.target.value});
     }
-    
+
+    const search = useLocation().search;
     // const [selected, setSelected] = useState();
 
     useEffect(() => {
-        console.log(new URLSearchParams(search).get('file'));
-    })
+        loadCourse();
+    }, [])
+
+    const loadCourse = async () => {
+        await axios.get("http://localhost:4500/web/get/" + id).then((result) => {
+            setCourse(result.data);
+        })
+        
+    }
 
     const [loadingFile, setLoadingFile] = useState(false);
     const [loadingImg, setLoadingImg] = useState(false);
@@ -140,14 +149,12 @@ const AddCourse = () => {
 
         try{    
             if(true){
-                await axios.post('http://localhost:4500/web/add/', course).then(() => {
-                    alert("Web Added Successfully");
+                await axios.put('http://localhost:4500/web/update/' + id, course).then(() => {
+                    alert("Course Updated Successfully");
                 }).catch((err) => {
                     alert(err);
                 })
                 window.location = ("/dashboard/web");
-
-                console.log(course);
             }             
             
           }catch(error){
@@ -173,7 +180,7 @@ const AddCourse = () => {
 
                     {/* ----------------- File Upload -----------------  */}
 
-                    {new URLSearchParams(search).get('file') === "true" && 
+                    {selected.file === true && 
                     <div className="form-group">
                         <h6>File upload</h6>
                         <Box sx={{ py: 2 }}>
@@ -185,7 +192,9 @@ const AddCourse = () => {
                             <div className="dropzone-msg dz-message needsclick">
                                 <i className="fas fa-cloud-upload-alt" />    
                                 {/* <h5 className="dropzone-msg-title">{thumbs[0].key}</h5>: */}
-                                <h5 className="dropzone-msg-title">Drop Files here or click to upload.</h5>                                                  
+                                {selected.file === true ?
+                                    <h5 className="dropzone-msg-title">{fName}</h5>:
+                                    <h5 className="dropzone-msg-title">Drop Files here or click to upload.</h5>}                                                 
                             </div>
                         </div>
 
@@ -201,7 +210,7 @@ const AddCourse = () => {
 
                     {/* ----------------- Image Upload -----------------  */}
 
-                    {new URLSearchParams(search).get('image') === "true" && 
+                    {selected.image === true && 
                     <div className="form-group">
                         <h6>Image upload</h6>
                         <Box sx={{ py: 2 }}>
@@ -211,8 +220,9 @@ const AddCourse = () => {
                         <div {...getRootProps({ className: 'dropzone' })}>
                             <input {...getInputProps()}/>
                             <div className="dropzone-msg dz-message needsclick">
-                                <i className="fas fa-cloud-upload-alt" />
-                                <h5 className="dropzone-msg-title">Drop images here or click to upload.</h5>                                                    
+                                <i className="fas fa-cloud-upload-alt" />   
+                                {selected.image === true &&
+                                    <h5 className="dropzone-msg-title">{iName}</h5>}                                                
                             </div>
                         </div>
 
@@ -237,7 +247,7 @@ const AddCourse = () => {
 
                     {/* ----------------- Video Upload -----------------  */}
 
-                    {new URLSearchParams(search).get('video') === "true" &&
+                    {selected.video === true &&
                     <div className="form-group">
                         <h6>Video upload</h6>
                         <Box sx={{ py: 2 }}>
@@ -247,8 +257,9 @@ const AddCourse = () => {
                         <div {...getRootProps({ className: 'dropzone' })}>
                             <input {...getInputProps()}/>
                             <div className="dropzone-msg dz-message needsclick">
-                                <i className="fas fa-cloud-upload-alt" />
-                                <h5 className="dropzone-msg-title">Drop Videos here or click to upload.</h5>                                                    
+                                <i className="fas fa-cloud-upload-alt" />  
+                                {selected.video === true &&
+                                    <h5 className="dropzone-msg-title">{vName}</h5>}                                                 
                             </div>
                         </div>
 
@@ -274,4 +285,4 @@ const AddCourse = () => {
     )
 }
 
-export default AddCourse;
+export default UpdateCourse;

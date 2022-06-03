@@ -16,7 +16,7 @@ import DashboardIcon from '@mui/icons-material/Dashboard';
 import { Link } from 'react-router-dom';
 
 // const pages = ['test', 'test2', 'Topic3', 'Topic4'];
-const pages = ['addgroup', 'Group', 'web', 'Topic4'];
+const pages = ['addgroup', 'Group', 'web', 'Research Chat'];
 const settings = ['Profile', 'Dashboard', 'Logout'];
 
 const NavBar = ({name}) => {
@@ -94,9 +94,10 @@ const NavBar = ({name}) => {
                 <MenuItem key={page} onClick={handleCloseNavMenu}>
                   <Typography textAlign="center">{page}</Typography>
                 </MenuItem>
-              ))}
-            </Menu>
+              ))}         
+            </Menu>           
           </Box>
+          
           <AdbIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }} />
           <Typography
             variant="h5"

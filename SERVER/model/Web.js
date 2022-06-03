@@ -28,6 +28,13 @@ const webSchema = new Schema({
     vName: {
         type: String
     },
+    selected: 
+        {
+            file: {type: Boolean, required: true},
+            image: {type: Boolean, required: true},
+            video: {type: Boolean, required: true}
+        }
+    
 })
 
 const Web = mongoose.model( 'web', webSchema);
