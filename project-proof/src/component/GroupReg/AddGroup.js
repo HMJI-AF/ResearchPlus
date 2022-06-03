@@ -2,9 +2,9 @@ import React, { useEffect,useState } from "react";
 import {  Button, Grid, Paper } from "@mui/material";
 import axios from "axios";
 // import Background from './../../images/Group/group_background_image.png';
+import { Link, useNavigate } from 'react-router-dom';
 
-
-const paperStyle={backgroundColor: "#bbd9f7", padding:50, height:'auto', width:700, margin:'50px auto'};
+const paperStyle={backgroundColor: "#bbd9f7", padding:50, height:'auto', width:700, margin:'-30px auto'};
 // const textStyle={ height:'auto', width:400,textAlign: "right"};
 const btnStyle={margin:'20px 0'};
 const text={fontFamily: "Cursive"};
@@ -64,6 +64,9 @@ const fromun = {margin:'30px auto'};
 
     return(
         <Grid >
+            <Link to={`/dashboard/Group`} style={{ textDecoration: 'none'}}><Button class="btn btn-outline-success" style={{margin:'50px 0px 0px 50px'}} size="small" color="primary">
+            registered groups
+            </Button></Link>
       <Paper elevation={10} style={paperStyle}>
         <Grid align='center'>
           <h2>Group Registration Form</h2>

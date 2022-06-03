@@ -1,8 +1,5 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
-const jwt = require('jsonwebtoken');
-const passwordComplexity = require('joi-password-complexity');
-const Joi = require('joi');
 
 const GroupSchema = new Schema({
 
