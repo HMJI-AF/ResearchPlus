@@ -15,7 +15,12 @@ import AdbIcon from '@mui/icons-material/Adb';
 import DashboardIcon from '@mui/icons-material/Dashboard';
 import { Link } from 'react-router-dom';
 
-const pages = ['Topic', 'Group', 'Topic3', 'Topic_reqests','studTopic'];
+
+const pages = ['Topic', 'Group', 'web', 'Topic_reqests','studTopic'];
+
+// const pages = ['test', 'test2', 'Topic3', 'Topic4'];
+
+
 const settings = ['Profile', 'Dashboard', 'Logout'];
 
 const NavBar = ({name}) => {
@@ -93,9 +98,10 @@ const NavBar = ({name}) => {
                 <MenuItem key={page} onClick={handleCloseNavMenu}>
                   <Typography textAlign="center">{page}</Typography>
                 </MenuItem>
-              ))}
-            </Menu>
+              ))}         
+            </Menu>           
           </Box>
+          
           <AdbIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }} />
           <Typography
             variant="h5"

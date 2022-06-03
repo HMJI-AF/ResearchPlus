@@ -1,4 +1,4 @@
-import  {useState} from 'react';
+import  {useState,useEffect} from 'react';
 import {  Button, Grid, Link, Paper, TextField, Typography } from "@mui/material";
 import axios from 'axios';
 import LoginNav from '../SignInNav/LoginNav';
@@ -14,6 +14,16 @@ const bottomText={margin:'10px 0px 10px 0px'};
 const errorMsg = {width:"auto", padding: "15px", margin:"5px 0",fontSize: "15px",backgroundColor:"#f34646",color:"white",textAlign:"center", borderRadius:"4px"};;
 
 const SignIn = () =>{
+
+  useEffect(()=>{
+    const loggedInUser = localStorage.getItem("username");
+
+    if (loggedInUser){
+    window.location = "/dashboard"
+    }
+
+    
+},[])
 
   const navigate = useNavigate();
 
