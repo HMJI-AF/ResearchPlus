@@ -62,7 +62,6 @@ function Dashboard(){
 
         <Route path="/Topic" element={<AddTopic />} />
         <Route path="/Topic_reqests" element={<TopicReq />} />
-        <Route path="/studTopic" element={<studTopic />} />
 
 
 
