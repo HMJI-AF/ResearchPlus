@@ -10,7 +10,7 @@ export default function TopicReq(){
 
     useEffect(()=> {
         function getTopic(){
-            axios.get("http://localhost:4500/topic/get-topic/" + localStorage.getItem("username"))
+            axios.get("http://localhost:4500/topic/get-topic/" + JSON.parse(localStorage.getItem("username")).toUpperCase())
             .then((res)=>{
                 setListOfTopic(res.data);
                 console.log(res.data)

@@ -37,6 +37,8 @@ const SignIn = () =>{
       setCredentials({...credentials,[e.target.name]:e.target.value})
     }
 
+    console.log(credentials.email);
+
     const handleSubmit = async(e) =>{
       e.preventDefault();
       try{
