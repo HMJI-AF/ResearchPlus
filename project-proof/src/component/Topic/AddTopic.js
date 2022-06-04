@@ -71,7 +71,12 @@ const fromun = {margin:'30px auto'};
 
 
     return(
+        
+        
         <Grid style={{backgroundColor: "#FFF5EE"}} >
+            <Link to={`/dashboard/stuTopicView/"+ JSON.parse(localStorage.getItem("username")).toUpperCase()`} style={{ textDecoration: 'none'}}><Button class="btn btn-outline-success" style={{margin:'50px 0px 0px 50px'}} size="small" color="primary">
+            registered groups
+            </Button></Link>
             {/* <Link to={`/dashboard/Group`} style={{ textDecoration: 'none'}}><Button class="btn btn-outline-success" style={{margin:'50px 0px 0px 50px'}} size="small" color="primary">
             registered groups
             </Button></Link> */}
@@ -127,6 +132,8 @@ const fromun = {margin:'30px auto'};
             </form>
         </div>
         </Paper>
+
+        
     </Grid>
 
     )

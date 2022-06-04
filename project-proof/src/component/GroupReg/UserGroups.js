@@ -18,7 +18,26 @@ function UserGroup(){
 
     const [searchText, setSearchText] = useState('');
 
+    const [user, setUser] = useState([]);
 
+
+    useEffect(()=>{
+        const loggedInUserId = localStorage.getItem("userId");
+
+
+            const userId = JSON.parse(loggedInUserId);
+
+        
+             axios.get(`http://localhost:4500/user/${userId}`).then((res)=>{
+                let user = res.data;
+                setUser(user);
+
+            }).catch((err)=>{
+                    alert(err.message)
+            })
+ 
+    }
+    )
 
     const loadGroup = async() => {
         const result = await axios.get('http://localhost:5000/group/get/:id');
@@ -59,6 +78,7 @@ function UserGroup(){
             renderCell: (cellValues) => {
               return (
                 <div>
+                    {(user.role==='admin') &&
                     <Link to={`/dashboard/panelTable/?groupID=${cellValues.row._id}`}>
                 <Button
                   variant="contained"
@@ -69,6 +89,7 @@ function UserGroup(){
                   }}>
                       Add
                 </Button></Link>
+            }
                 </div>
         
               );
