@@ -51,7 +51,30 @@ function UserGroup(){
         { field: 'person1', headerName: 'Leader (1)', width: 240 },
         { field: 'person2', headerName: 'Person 2', width: 200 },
         { field: 'person3', headerName: 'Person 3', width: 200 },
-        { field: 'person4', headerName: 'Person 4', width: 200 },];
+        { field: 'person4', headerName: 'Person 4', width: 200 },
+        {
+            headerName:"Panel member",
+            field: "Edit",
+            width: 150,
+            renderCell: (cellValues) => {
+              return (
+                <div>
+                    <Link to={`/dashboard/panelTable/?groupID=${cellValues.row._id}`}>
+                <Button
+                  variant="contained"
+                  color="primary"
+                  onClick={(event) => {
+                    // updateUpUser(event, cellValues.row.role,cellValues.row._id);
+                    // console.log(cellValues.row._id)
+                  }}>
+                      Add
+                </Button></Link>
+                </div>
+        
+              );
+            }
+          }
+    ];
 
 
 
@@ -76,7 +99,7 @@ function UserGroup(){
              .then((res)=>{
                 let Group = res.data;
                     setGroup(Group);
-                    console.log(Group)
+                    // console.log(Group)
 
             }).catch((err)=>{
                     alert(err.message)
@@ -133,7 +156,7 @@ function UserGroup(){
           
       <center><h3>Group Table</h3></center>
     <center>
-    <div style={{ height: 450, width: '60%' }} >
+    <div style={{ height: 450, width: '70%' }} >
     <DataGrid 
         getRowId={(row) => row._id}
         rows={Group}

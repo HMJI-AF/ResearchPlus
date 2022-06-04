@@ -23,25 +23,25 @@ router.route("/add").post(async(req,res) => {
         coSupervisorOpinion
     })
 
-    try{
-        const user = await Topic.findOne({person1:req.body.person1}); 
+    // try{
+    //     const user = await Topic.findOne({person1:req.body.person1}); 
 
 
-         if(user){
-            return res.status(409).send({message: "User with given group already exists"})
-        }
+    //      if(user){
+    //         return res.status(409).send({message: "User with given group already exists"})
+    //     }
             
-        else{
+    //     else{
             newtopic.save().then(()=>{
                 res.json("Topic Added")
             }).catch((err)=>{
                 console.log(err);
             })
                 
-        }
-    }catch (error){
-        res.status(500).send({message: "Internal Server Error"})
-    }
+        // }
+    // }catch (error){
+    //     res.status(500).send({message: "Internal Server Error"})
+    // }
     
    
 
@@ -62,7 +62,8 @@ router.route("/get-topic/:id").get((req,res)=>{
     let supervisorId = req.params.id;
     Topic.find(
         {
-            supervisor:supervisorId
+            supervisor:supervisorId,
+            supervisorOpinion: "pending"
         }
     ).then((topic)=>{
         res.json(topic)
@@ -70,6 +71,74 @@ router.route("/get-topic/:id").get((req,res)=>{
         console.log(err);
     })
 
+})
+
+router.route("/co-get-topic/:id").get((req,res)=>{
+    let supervisorId = req.params.id;
+    Topic.find(
+        {
+            coSupervisor:supervisorId,
+            coSupervisorOpinion: "pending",
+            supervisorOpinion: "Accept"
+        }
+    ).then((topic)=>{
+        res.json(topic)
+    }).catch((err)=>{
+        console.log(err);
+    })
+
+})
+
+router.route("/stu-get-topic/:id").get((req,res)=>{
+    let studentId = req.params.id;
+    Topic.findOne(
+        {
+            person1:studentId,
+            // coSupervisorOpinion: "pending",
+            // supervisorOpinion: "Accept"
+        }
+    ).then((topic)=>{
+        res.json(topic)
+    }).catch((err)=>{
+        console.log(err);
+    })
+
+})
+
+router.route("/spesific-topic/:id").get((req,res)=>{
+    let topicId = req.params.id;
+    Topic.findOne(
+        {
+            _id:topicId
+        }
+    ).then((topic)=>{
+        res.json(topic)
+    }).catch((err)=>{
+        console.log(err);
+    })
+
+})
+
+router.route("/up-sup-opinion/:id").put((req,res)=>{
+    let topicId = req.params.id;
+    Topic.findByIdAndUpdate(
+        topicId, req.body
+    ).then((topic)=>{
+        res.json(topic)
+    }).catch((err)=>{
+        console.log(err);
+    })
+})
+
+router.route("/up-co-opinion/:id").put((req,res)=>{
+    let topicId = req.params.id;
+    Topic.findByIdAndUpdate(
+        topicId, req.body
+    ).then((topic)=>{
+        res.json(topic)
+    }).catch((err)=>{
+        console.log(err);
+    })
 })
 
 router.route("/update/:id").put(async (req, res)=>{
@@ -82,7 +151,7 @@ router.route("/update/:id").put(async (req, res)=>{
         gender
     }
 
-    const update = await Student.findByIdAndUpdate(userId, updateStudent)
+    const update = await Topic.findByIdAndUpdate(userId, updateTopic)
     .then(()=>{
         res.status(200).send({status:"User updated"})
     }).catch((err)=>{
@@ -94,7 +163,7 @@ router.route("/update/:id").put(async (req, res)=>{
 router.route("/delete/:id").delete(async(req,res)=>{
     let userId = req.params.id;
 
-    await Student.findByIdAndDelete(userId)
+    await Topic.findByIdAndDelete(userId)
     .them(()=>{
         res.status(200).send({status:"User deleted", user: update})
     }).catch((err)=>{

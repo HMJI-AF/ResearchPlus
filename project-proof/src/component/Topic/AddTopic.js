@@ -14,11 +14,11 @@ const fromun = {margin:'30px auto'};
 
     const [topic, setTopic] = useState("");
     const [supervisor, setSupervisor] = useState("");
-    const [supervisorOpinion, setSupervisorOpinion] = useState("pending...");
-    const [finalDecision, setFinalDecision] = useState("pending...");
+    const [supervisorOpinion, setSupervisorOpinion] = useState("pending");
+    const [finalDecision, setFinalDecision] = useState("pending");
     const [document, setDocument] = useState("");
     const [coSupervisor, setCoSupervisor] = useState("");
-    const [coSupervisorOpinion, setCoSupervisorOpinion] = useState("pending...");
+    const [coSupervisorOpinion, setCoSupervisorOpinion] = useState("pending");
 
 
     
@@ -40,7 +40,7 @@ const fromun = {margin:'30px auto'};
             coSupervisorOpinion
         }
 
-        console.log(newTopic)
+        // console.log(newTopic)
         
         axios.post("http://localhost:4500/topic/add",newTopic).then(()=>{
         alert("Topic Added")
@@ -48,7 +48,7 @@ const fromun = {margin:'30px auto'};
     }).catch((err)=>{
         alert(err)
     })
-        
+    window.location = ("/dashboard/stuTopicView/"+ JSON.parse(localStorage.getItem("username")).toUpperCase());
     }
 
 
@@ -109,7 +109,16 @@ const fromun = {margin:'30px auto'};
                     
                 </div>
             
-            
+                <div style={fromun}>
+                    <label style={text} for="name">Cosupervisor  :</label>
+                    <input  type="text"  id="person4"  placeholder="Enter "   required className="form-control"
+                    onChange={(e)=>{
+
+                        setCoSupervisor(e.target.value);
+
+                    }}/>
+                    
+                </div>
                 
                     
                

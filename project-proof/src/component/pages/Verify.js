@@ -9,13 +9,13 @@ const Verify = () => {
     useEffect(() => {            
         try{
             axios.post('http://localhost:4500/auth/verify/' + token).then(() => {
-                console.log("Success");
+                // console.log("Success");
                 localStorage.setItem("userToken",token)
                 window.location.href = "/landedpage/firstView";
             }) 
         }
         catch(err){
-            console.log("Failed");
+            // console.log("Failed");
             console.log(err)
         }            
     })

@@ -44,8 +44,8 @@ const AddCourse = () => {
     // const [selected, setSelected] = useState();
 
     useEffect(() => {
-        console.log(new URLSearchParams(search).get('file'));
-    })
+        // console.log(new URLSearchParams(search).get('file'));
+    }, [])
 
     const [loadingFile, setLoadingFile] = useState(false);
     const [loadingImg, setLoadingImg] = useState(false);

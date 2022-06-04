@@ -72,6 +72,16 @@ router.route('/').get((req, res) => {
     })
 })
 
+router.route('/getPanel').get((req, res) => {
+    ResearchPlusUser.find({
+        role: "staffMember"
+    }).then((home_buildings) => {
+        res.json(home_buildings);
+    }).catch((err) => {
+        console.log(err);
+    })
+})
+
 
 router.route("/edit/:id").put(async (req,res)=>{
     let userId = req.params.id;

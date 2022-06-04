@@ -32,11 +32,11 @@ const SignIn=()=>{
     // input.password = bcrypt.hashSync(input.password,'$2a$10$CwTycUXWue0Thq9StjUM0u')
     // input.password = hashedPassword;
     
-    console.log(input);
+    // console.log(input);
   }
 
   const googleSignIn = (e) =>{
-    console.log("Google Sign In");
+    // console.log("Google Sign In");
   }
 
   return(

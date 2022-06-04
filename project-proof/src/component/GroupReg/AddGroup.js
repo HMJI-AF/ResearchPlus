@@ -16,6 +16,7 @@ const fromun = {margin:'30px auto'};
     const [person2, setPerson2] = useState("");
     const [person3, setPerson3] = useState("");
     const [person4, setPerson4] = useState("");
+    const [panelMember, setPanelMember] = useState("");
 
     
     const [username, setusername] = useState([]);
@@ -29,10 +30,9 @@ const fromun = {margin:'30px auto'};
             person1 :  username,
             person2, 
             person3,
-            person4
+            person4,
+            panelMember
         }
-
-        console.log(newGroup)
         
         axios.post("http://localhost:4500/groups/add",newGroup).then(()=>{
         alert("Group Added")

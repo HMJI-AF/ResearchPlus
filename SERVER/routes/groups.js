@@ -9,24 +9,18 @@ router.route("/add").post(async(req,res) => {
     const person2 = req.body.person2;
     const person3 = req.body.person3;
     const person4 = req.body.person4;
+    const panelMember = req.body.panelMember;
 
     const newgroup = new Group({
 
         person1,
         person2, 
         person3,
-        person4
+        person4,
+        panelMember
     }) 
 
     try{
-
-        // const userfind2 = await ResearchPlusUser.findOne({email:req.body.person2});
-        // const userfind3 = await ResearchPlusUser.findOne({email:req.body.person3});
-        // const userfind4 = await ResearchPlusUser.findOne({email:req.body.person4});
-
-        // if(!userfind2 || !userfind3 || !userfind4 ){
-        //     return res.status(409).send({message: " given IT number not exists"})
-        // }
 
         const user1 = await Group.findOne({person1:req.body.person1});        
         const user12 = await Group.findOne({person2:req.body.person1});
@@ -86,18 +80,13 @@ router.route("/").get((req,res)=>{
 })
 
 
-router.route("/update/:id").put(async (req, res)=>{
-    let person1Id = req.params.id;
-    const{person1, person2, person3,person4} = req.body;
+router.route("/update").put(async (req, res)=>{
+    let groupID = req.query.groupID;
+    let panelID = req.query.panelID;
 
-    const updateGroup = {
-        person1,
-        person2,
-        person3,
-        person4
-    }
-
-    const update = await Group.findByIdAndUpdate(person1Id, updateGroup)
+    await Group.findByIdAndUpdate(groupID, {
+        panelMember: panelID
+    })
     .then(()=>{
         res.status(200).send({status:"Group updated"})
     }).catch((err)=>{

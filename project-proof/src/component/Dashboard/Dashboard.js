@@ -11,7 +11,7 @@ import UserGroup from "../GroupReg/UserGroups";
 
 import AddTopic from "../Topic/AddTopic";
 import TopicReq from "../Topic/TopicReq";
-import studTopic from "../Topic/TopicReq";
+import StuTopicview from "../Topic/StuTopicView";
 
 import AddCourse from "./course-web/AddCourse";
 import UploadFile from "./course-web/UploadFile";
@@ -19,6 +19,10 @@ import VideoPlayer from "./course-web/VideoPlayer";
 import CourseWeb from "./course-web/CourseWeb";
 import AddHeader from "./course-web/AddHeader";
 import UpdateCourse from "./course-web/UpdateCourse";
+import SupTopicUpdate from "../Topic/SupTopicUpdate";
+import CoTopicReq from "../Topic/CoTopicReq";
+import CoTopicUpdate from "../Topic/CoTopicUpdate";
+import PanelMemberTable from "../Topic/PanelMemberList";
 
 
 function Dashboard(){
@@ -63,6 +67,14 @@ function Dashboard(){
         <Route path="/Topic" element={<AddTopic />} />
         <Route path="/Topic_reqests" element={<TopicReq />} />
 
+
+
+
+        <Route path="/Co_Topic_reqests" element={<CoTopicReq />} />
+        <Route path="/supTopicView/:id" element={<SupTopicUpdate />} />
+        <Route path="/coTopicView/:id" element={<CoTopicUpdate />} />
+        <Route path="/panelTable" element={<PanelMemberTable />} />
+        <Route path="/stuTopicView/:id" element={<StuTopicview />} />
 
 
         <Route path="/add-course" element={<AddCourse />} />

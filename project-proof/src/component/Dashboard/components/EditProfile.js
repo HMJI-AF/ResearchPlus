@@ -32,7 +32,7 @@ function EditProfile(){
     }
 
     const handleFileChange =(e)=>{
-        console.log(e.target.files);
+        // console.log(e.target.files);
         setImgChecker(e.target.files.length);
         setFile(URL.createObjectURL(e.target.files[0]));
     }
