@@ -45,7 +45,8 @@ const SignIn = () =>{
         const {data:res} = await axios.post("http://localhost:4500/auth",credentials);
         const username = credentials.email.split('@')[0];
         localStorage.setItem("username",JSON.stringify(username));  
-        localStorage.setItem("userId",JSON.stringify(res.data));
+        localStorage.setItem("userId",JSON.stringify(res.data)); 
+        localStorage.setItem("userRole",JSON.stringify(res.dataRole));
         navigate('/dashboard',{state:{dataId:res.data}})
       }catch(error){
         if(

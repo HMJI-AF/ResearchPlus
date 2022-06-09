@@ -18,15 +18,24 @@ import { Link } from 'react-router-dom';
 
 
 
-const pages = ['Topic', 'Group', 'web', 'Topic_reqests', 'co_Topic_reqests'];
+const NavBar = ({name}) => {
+
+
+  
+        const loggedInUserRole = localStorage.getItem("userRole");
+        const userRole = JSON.parse(loggedInUserRole);
+        console.log(userRole)
+
+  const pages = ['Topic', 'Group', 'web', 'Topic_reqests', 'co_Topic_reqests'];
+
+// {(user.role==='admin') && 'hi'}
 
 
 // const pages = ['test', 'test2', 'Topic3', 'Topic4'];
 
 
-const settings = ['Profile', 'Dashboard', 'Logout'];
+const settings = ['Profile', 'Dashboard', 'Logout',`${(userRole)==='admin' ? 'Admin Settings' : ''}`];
 
-const NavBar = ({name}) => {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
 

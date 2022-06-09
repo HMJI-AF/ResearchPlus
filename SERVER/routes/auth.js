@@ -29,7 +29,7 @@ router.post('/',async (req,res)=>{
                 return res.status(401).send({message: "Invalid password"})
             }else{
                 const token = user.generateAuthToken();
-                res.status(200).send({data:user._id,message:"Logged in Successfully"});
+                res.status(200).send({data:user._id,dataRole:user.role,message:"Logged in Successfully"});
                 // localStorage.setItem('userLoginToken', token);
             }
         }

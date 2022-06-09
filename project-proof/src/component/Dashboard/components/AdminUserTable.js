@@ -133,11 +133,11 @@ function AdminUserTable() {
 
   return (
       <div>
-          <hr/>
           
           <center><h3>User Table</h3></center>
-      <center>
-    <div style={{ height: 450, width: '70%' }}>
+      
+    <div style={{ height: 500, width: 910 }}>
+
       <DataGrid
         getRowId={(row) => row._id}
         rows={tableData}
@@ -146,7 +146,7 @@ function AdminUserTable() {
         rowsPerPageOptions={[5]}
         // customToolbarSelect
       />
-    </div></center>
+    </div>
     </div>
   );
 }

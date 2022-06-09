@@ -46,9 +46,11 @@ function Profile(){
             </Typography>
                 </Box>
 
+                <Box sx={{ display: 'flex',justifyContent: 'center' }}>
                 {(user.role==='admin') &&
                     <AdminUserTable/>
                 }
+                </Box>
                 
             </div>
 
